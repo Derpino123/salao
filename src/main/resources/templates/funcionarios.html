@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head>
+		<title>Funcionários</title>
+		<!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	</head>
+	<body>
+	<h3>Funcionários</h3>
+		<div class="container">
+			<table >
+				<thead>
+					<tr>
+						<th>Matrícula</th>
+						<th>Nome</th>
+					</tr>
+				</thead>
+				<tbody th:each="funcionario : ${funcionarios}">
+					<tr>
+						<td><a th:href ="${(#mvc.url('FC#funcionarioDetail').arg(0, funcionario.matricula)).build()}"><span th:text="${funcionario.matricula}"></span></a></td>
+						<td><span th:text="${funcionario.nome}"></span></td>
+					</tr>
+				</tbody>
+			</table> <br></br>
+			<a href="/cadastroFuncionario"><button class="btn waves-effect waves-light">Novo Funcionário</button></a>
+		</div>
+	
+		<!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+	</body>
+</html>
